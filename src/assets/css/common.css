@@ -1,0 +1,125 @@
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+dl,
+dt,
+form,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+/*去掉默认的小圆点,ol一般不用*/
+ul {
+  list-style: none;
+}
+
+/*去掉下划线*/
+a {
+  text-decoration: none;
+}
+
+/*设置不倾斜*/
+em {
+  font-style: normal;
+}
+
+/*去掉在ie下图片做链接时的边框*/
+img {
+  border: 0px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* 让h标签继承body中的字体大小的设置*/
+  font-size: 100%；;
+}
+
+/*清除浮动，解决margin-top的塌陷*/
+
+.clearfix:before,
+.clearafter:after {
+  content: "";
+  /*解决塌陷:此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。*/
+  display: table;
+}
+.clearfix:after {
+  /*两边元素都不会浮动*/
+  clear: both;
+}
+/*清除浮动,兼容ie*/
+.clearfix {
+  zoom: 1;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tc{
+  text-align: center;
+}
+
+.tl{
+  text-align: left;
+}
+
+.tr{
+  text-align: right;
+}
+
+.w-1200 {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.df-aic {
+  display: flex;
+  align-items: center;
+}
+
+.d-ib {
+  display: inline-block;
+}
+
+.df-aic {
+  display: flex;
+  align-items: center;
+}
+
+.df-aic-jcfe {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.df-aic-jcsa {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.df-aic-jcsb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
