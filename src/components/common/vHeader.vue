@@ -18,6 +18,9 @@
                 <li class="ml20">
                   <router-link :to="{ name: 'reg' }">注册</router-link>
                 </li>
+                <li class="ml20">
+                  <router-link :to="{ name: 'addpost' }">发帖</router-link>
+                </li>
               </ul>
             </template>
             <template v-else class="grid-content df-aic-jcfe">
