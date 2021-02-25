@@ -86,5 +86,9 @@ export default {
     margin-top: 60px;
     font-size: 20px;
   }
+
+  .ml20{
+    margin-left: 20px;
+  }
 }
 </style>
