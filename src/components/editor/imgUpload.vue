@@ -1,9 +1,6 @@
 <template>
   <transition name="fade">
-    <div
-      class="edit-content"
-      v-show="isShow"
-    >
+    <div class="edit-content" v-show="isShow">
       <div class="">插入图片</div>
       <div class="">
         <ul class="">
@@ -19,9 +16,7 @@
               />
             </div>
             <button type="button" class="">
-              <label for="uploadImg">
-                <i class=""></i>上传图片
-              </label>
+              <label for="uploadImg"> <i class=""></i>上传图片 </label>
             </button>
             <input
               type="file"
@@ -39,10 +34,7 @@
         </ul>
       </div>
       <span class="" @click.stop="close()">
-        <a
-          href="javascript:;"
-          class=""
-        ></a>
+        <a href="javascript:;" class=""></a>
       </span>
     </div>
   </transition>
@@ -105,5 +97,4 @@ export default {
 };
 </script>
 
-<style lang="less">
-</style>
+<style lang="less"></style>
