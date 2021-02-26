@@ -22,16 +22,18 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "uuid": "^3.4.0",
-    "svg-captcha": "^1.4.0",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
+    "dayjs": "^1.10.4",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jsonwebtoken": "^8.5.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "qs": "^6.9.6",
+    "svg-captcha": "^1.4.0",
+    "uuid": "^3.4.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

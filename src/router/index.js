@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
+import jwt from 'jsonwebtoken'
+import moment from 'dayjs'
+
 import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
@@ -8,6 +12,9 @@ const routes = [{
     path: '/personal',
     // 当存在子路由的时候父路由就不在需要name了
     component: Home,
+    meta: {
+      requiresAuth: true
+    },
     // 首页下的各个模块
     children: [{
         path: '',
@@ -72,12 +79,58 @@ const routes = [{
     name: 'addpost',
     component: () => import( /* webpackChunkName: "addpost" */ '../views/AddPost.vue')
   },
+  // 下面这两个路由配置可以让错误的路由都统一导航到错误提示页面
+  {
+    path: '/404',
+    name: 'notfound',
+    component: () => import( /* webpackChunkName: "notfound" */ '../views/NotFound.vue')
+  },
+  {
+    path: '*',
+    redirect: '/404'
+  },
+
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  // 取缓存的token和用户信息
+  const token = localStorage.getItem('token')
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+  if (token !== '' && token !== null) {
+    // 验证token时效
+    const payload = jwt.decode(token)
+    console.log(moment().isBefore(moment(payload.exp * 1000)))
+    // true代表当前的时间在token过期时间之前，表示token未过期
+    if (moment().isBefore(moment(payload.exp * 1000))) {
+      store.commit('setToken', token)
+      store.commit('setUserInfo', userInfo)
+      store.commit('setIsLogin', true)
+      // if (!store.state.ws) {
+      //   store.commit('initWebSocket', {})
+      // }
+    } else {
+      localStorage.clear()
+    }
+  }
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const isLogin = store.state.isLogin
+    if (isLogin) {
+      // 已经登录的状态
+      // 权限的判断,meta元数据
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    // 放行不需要鉴权的路由
+    next()
+  }
 })
 
 export default router

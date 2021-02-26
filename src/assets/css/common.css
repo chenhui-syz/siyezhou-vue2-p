@@ -46,19 +46,8 @@ h6 {
 
 /*清除浮动，解决margin-top的塌陷*/
 
-.clearfix:before,
-.clearafter:after {
-  content: "";
-  /*解决塌陷:此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。*/
-  display: table;
-}
-.clearfix:after {
-  /*两边元素都不会浮动*/
-  clear: both;
-}
-/*清除浮动,兼容ie*/
 .clearfix {
-  zoom: 1;
+  overflow: hidden;
 }
 
 .fl {
