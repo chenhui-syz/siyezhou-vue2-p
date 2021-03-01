@@ -45,9 +45,6 @@ export default {
     width: 372px;
     padding: 10px;
     border: 1px solid #d9d9d9;
-    background-color: #fff;
-    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     .edit-item {

@@ -1,13 +1,13 @@
 <template>
-  <div class="hotrank-page-container">
-    hotrank-page-container
+  <div class="read-page-container">
+    read-page-container
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: "hotrank",
+  name: "read",
   data() {
     return {};
   },
@@ -16,6 +16,6 @@ export default {
 </script>
 
 <style lang="less">
-.hotrank-page-container {
+.read-page-container {
 }
 </style>

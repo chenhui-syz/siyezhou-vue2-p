@@ -9,6 +9,10 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [{
+    path: '/',
+    name: 'home',
+    redirect: '/personal'
+  }, {
     path: '/personal',
     // 当存在子路由的时候父路由就不在需要name了
     component: Home,
@@ -27,7 +31,21 @@ const routes = [{
       }, {
         path: 'hotrank',
         name: 'hotrank',
-        component: () => import( /* webpackChunkName: "hotrank" */ '../components/user/hotRank.vue')
+        linkActiveClass:'high-router',
+        component: () => import( /* webpackChunkName: "hotrank" */ '../components/user/hotRank.vue'),
+        children: [{
+          path: 'read',
+          name: 'read',
+          component: () => import( /* webpackChunkName: "read" */ '../components/user/hotrank/read.vue'),
+        }, {
+          path: 'like',
+          name: 'like',
+          component: () => import( /* webpackChunkName: "like" */ '../components/user/hotrank/like.vue'),
+        }, {
+          path: 'collection',
+          name: 'collection',
+          component: () => import( /* webpackChunkName: "collection" */ '../components/user/hotrank/collection.vue'),
+        }]
       },
       {
         path: 'info',

@@ -1,7 +1,7 @@
 <template>
   <div class="addpost-page-container">
     <div class="w-1200">
-      <el-form ref="form" :model="form" label-width="80px">
+      <el-form ref="ruleForm" :model="form" label-width="80px">
         <el-form-item label="活动名称">
           <el-input v-model="form.title"></el-input>
         </el-form-item>
@@ -62,6 +62,7 @@
           <el-input v-model="form.code"></el-input>
         </el-form-item>
       </el-form>
+      <el-button type="primary" @click="submit">立即发布</el-button>
     </div>
   </div>
 </template>
@@ -70,6 +71,7 @@
 import Face from "@/components/editor/face";
 import ImgUpload from "@/components/editor/imgUpload";
 import LinkAdd from "@/components/editor/linkAdd";
+window.vue = this
 export default {
   name: "addpost",
   components: {
@@ -164,6 +166,31 @@ export default {
       tmp.splice(this.pos, 0, val);
       this.content = tmp.join("");
     },
+    submit() {
+      // this.$refs[ruleForm].validate((valid) => {
+        // 验证通过，提交表单
+        // if (valid) {
+        //   console.log("验证通过，提交表单");
+        //   // login({
+        //   //   username: this.ruleForm.email,
+        //   //   password: this.ruleForm.password,
+        //   //   code: this.ruleForm.code,
+        //   //   sid: this.$store.state.sid,
+        //   // })
+        //     .then((res) => {
+        //       if (res.code === 200) {
+        //       } else if (res.code === 401) {
+        //         console.log("出现错误");
+        //       }
+        //     })
+        //     .catch((err) => {});
+        // } else {
+        //   // 不通过
+        //   // console.log("error submit!!");
+        //   // return false;
+        // }
+      // });
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -182,6 +209,29 @@ export default {
 
 <style lang="less">
 .addpost-page-container {
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounceOut {
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+  }
   .w-1200 {
     margin-top: 20px;
   }

@@ -58,15 +58,15 @@ h6 {
   float: right;
 }
 
-.tc{
+.tc {
   text-align: center;
 }
 
-.tl{
+.tl {
   text-align: left;
 }
 
-.tr{
+.tr {
   text-align: right;
 }
 
@@ -111,4 +111,18 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.edit-content {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.3);
+}
+
+.high-router{
+  background-color: red;
+  color: white;
 }
