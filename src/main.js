@@ -1,7 +1,11 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-import 'element-ui/lib/theme-chalk/index.css';
-import '@/assets/css/common.css';
+import "element-ui/lib/theme-chalk/index.css";
+import "@/assets/css/common.css";
+// 自定义指令
+import Alert from "./components/directives/alert";
+import Pop from "./components/directives/pop";
+
 import {
   Pagination,
   Dialog,
@@ -42,7 +46,6 @@ import {
   TabPane,
   Tag,
   Tree,
-  Alert,
   Slider,
   Icon,
   Row,
@@ -79,15 +82,15 @@ import {
   Loading,
   MessageBox,
   Message,
-  Notification
-} from 'element-ui';
+  Notification,
+} from "element-ui";
 
-import App from './App.vue'
-import './registerServiceWorker'
-import router from './router'
-import store from './store'
+import App from "./App.vue";
+import "./registerServiceWorker";
+import router from "./router";
+import store from "./store";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 Vue.use(Pagination);
 Vue.use(Dialog);
@@ -128,7 +131,6 @@ Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Tag);
 Vue.use(Tree);
-Vue.use(Alert);
 Vue.use(Slider);
 Vue.use(Icon);
 Vue.use(Row);
@@ -163,19 +165,21 @@ Vue.use(Backtop);
 Vue.use(PageHeader);
 Vue.use(CascaderPanel);
 
+// 自定义指令
+Vue.use(Alert);
+Vue.use(Pop);
+
 Vue.use(Loading.directive);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$msgbox = MessageBox;
-Vue.prototype.$alert = MessageBox.alert;
-Vue.prototype.$confirm = MessageBox.confirm;
+// Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 
-
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

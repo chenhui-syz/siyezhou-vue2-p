@@ -7,32 +7,28 @@
         </el-form-item>
         <!-- 富文本编辑框 -->
         <div class="edit-wrap">
-          <div class="">
-            <div class="">
-              <div class="rc-edit" ref="icons">
-                <!-- 表情 -->
-                <span @click="choose(0)" ref="face">
-                  <span>表情</span>
-                </span>
-                <!-- 图片 -->
-                <span @click="choose(1)" ref="img">
-                  <span>图片</span>
-                </span>
-                <!-- 链接 -->
-                <span @click="choose(2)" ref="link">
-                  <span>链接</span>
-                </span>
-              </div>
-              <textarea
-                id="editContent"
-                class="rc-editor"
-                name="content"
-                v-model="content"
-                @focus="focusEvent"
-                @blur="blurEvent"
-              ></textarea>
-            </div>
+          <div class="rc-edit" ref="icons">
+            <!-- 表情 -->
+            <span @click="choose(0)" ref="face">
+              <span>表情</span>
+            </span>
+            <!-- 图片 -->
+            <span @click="choose(1)" ref="img">
+              <span>图片</span>
+            </span>
+            <!-- 链接 -->
+            <span @click="choose(2)" ref="link">
+              <span>链接</span>
+            </span>
           </div>
+          <textarea
+            id="editContent"
+            class="rc-editor"
+            name="content"
+            v-model="content"
+            @focus="focusEvent"
+            @blur="blurEvent"
+          ></textarea>
           <div ref="modal">
             <face
               :isShow="current === 0"
@@ -71,7 +67,7 @@
 import Face from "@/components/editor/face";
 import ImgUpload from "@/components/editor/imgUpload";
 import LinkAdd from "@/components/editor/linkAdd";
-window.vue = this
+window.vue = this;
 export default {
   name: "addpost",
   components: {
@@ -167,28 +163,38 @@ export default {
       this.content = tmp.join("");
     },
     submit() {
+      console.log("xxx");
+      // this.$pop('shake','请上传图片或输入图片链接')
+      // this.$alert("文章内容不能为空");
+      // this.$Pageconfirm(
+      //   '确定退出吗？',
+      //   () => {
+
+      //   },
+      //   () => {}
+      // )
       // this.$refs[ruleForm].validate((valid) => {
-        // 验证通过，提交表单
-        // if (valid) {
-        //   console.log("验证通过，提交表单");
-        //   // login({
-        //   //   username: this.ruleForm.email,
-        //   //   password: this.ruleForm.password,
-        //   //   code: this.ruleForm.code,
-        //   //   sid: this.$store.state.sid,
-        //   // })
-        //     .then((res) => {
-        //       if (res.code === 200) {
-        //       } else if (res.code === 401) {
-        //         console.log("出现错误");
-        //       }
-        //     })
-        //     .catch((err) => {});
-        // } else {
-        //   // 不通过
-        //   // console.log("error submit!!");
-        //   // return false;
-        // }
+      // 验证通过，提交表单
+      // if (valid) {
+      //   console.log("验证通过，提交表单");
+      //   // login({
+      //   //   username: this.ruleForm.email,
+      //   //   password: this.ruleForm.password,
+      //   //   code: this.ruleForm.code,
+      //   //   sid: this.$store.state.sid,
+      //   // })
+      //     .then((res) => {
+      //       if (res.code === 200) {
+      //       } else if (res.code === 401) {
+      //         console.log("出现错误");
+      //       }
+      //     })
+      //     .catch((err) => {});
+      // } else {
+      //   // 不通过
+      //   // console.log("error submit!!");
+      //   // return false;
+      // }
       // });
     },
   },
@@ -251,7 +257,7 @@ export default {
     cursor: pointer;
     padding: 0 10px;
     line-height: 38px;
-    color: #009e94;
+    color: #409eff;
   }
   .rc-edit span i {
     position: relative;
@@ -273,6 +279,7 @@ export default {
 
   .edit-wrap {
     position: relative;
+    margin-bottom: 20px;
 
     .rc-editor {
       height: 260px;
@@ -284,6 +291,8 @@ export default {
       border-width: 1px;
       border-style: solid;
       background-color: #fff;
+      box-sizing: border-box;
+      border-color: #ccc;
     }
 
     .quote {
