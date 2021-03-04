@@ -18,13 +18,30 @@
                 <li class="ml20">
                   <router-link :to="{ name: 'reg' }">注册</router-link>
                 </li>
+              </ul>
+            </template>
+            <template v-else>
+              <ul class="grid-content df-aic-jcfe header-height">
+                <li class="userinfo-wrapper">
+                  <el-dropdown>
+                    <span class="el-dropdown-link">
+                      用户信息
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item
+                        >昵称：{{ userInfo.name }}</el-dropdown-item
+                      >
+                      <el-dropdown-item>头像：IMG</el-dropdown-item>
+                      <el-dropdown-item>
+                        <span @click="logout">退出登录</span>
+                      </el-dropdown-item>
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                </li>
                 <li class="ml20">
                   <router-link :to="{ name: 'addpost' }">发帖</router-link>
                 </li>
               </ul>
-            </template>
-            <template v-else class="grid-content df-aic-jcfe">
-              <div class="grid-content df-aic-jcfe"></div>
             </template>
           </el-col>
         </el-col>
@@ -34,11 +51,31 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
+  name: "vheader",
+  computed: {
+    ...mapState(["isLogin", "userInfo"]),
+  },
+  mounted() {},
   data() {
-    return {
-      isLogin: false,
-    };
+    return {};
+  },
+  methods: {
+    logout() {
+      console.log("cuowu");
+      this.$Pageconfirm(
+        "确定退出吗？",
+        () => {
+          localStorage.clear();
+          this.$store.commit("setToken", "");
+          this.$store.commit("setUserInfo", "");
+          this.$store.commit("setIsLogin", false);
+          this.$router.push({ name: "login" }, () => {});
+        },
+        () => {}
+      );
+    },
   },
 };
 </script>
@@ -62,6 +99,14 @@ export default {
 
   .ml20 {
     margin-left: 20px;
+  }
+  .userinfo-wrapper {
+    .el-dropdown-selfdefine {
+      font-size: 16px;
+      position: relative;
+      top: 1px;
+      cursor: pointer;
+    }
   }
 }
 </style>

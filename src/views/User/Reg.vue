@@ -29,7 +29,7 @@
         </el-form-item>
         <el-form-item class="df-aic-jcc">
           <el-button type="primary" @click="submitForm('ruleForm')"
-            >登录
+            >注册
           </el-button>
           <el-button @click="resetForm('ruleForm')">重置</el-button>
           <router-link class="ml20" :to="{ name: 'login' }"
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { reg } from "@/api/login";
 import CodeMix from "@/mixin/login";
 export default {
   name: "reg",
@@ -92,6 +93,23 @@ export default {
         // 验证通过，提交表单
         if (valid) {
           console.log("验证通过，提交表单");
+          reg({
+            username: this.ruleForm.email,
+            password: this.ruleForm.password,
+            name: this.ruleForm.name,
+            code: this.ruleForm.code,
+            sid: this.$store.state.sid,
+          }).then((res) => {
+            if (res.code === 200) {
+              this.$refs[ruleForm].resetFields();
+              // 跳转到登录界面，让用户登录
+              this.$alert("注册成功");
+              setTimeout(() => {
+                this.$router.push("/login");
+              }, 1000);
+              console.log(res);
+            }
+          });
         } else {
           // 不通过
           console.log("error submit!!");

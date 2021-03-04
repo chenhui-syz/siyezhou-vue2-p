@@ -7,6 +7,7 @@
         </el-form-item>
         <!-- 富文本编辑框 -->
         <div class="edit-wrap">
+          <!-- 操作栏 -->
           <div class="rc-edit" ref="icons">
             <!-- 表情 -->
             <span @click="choose(0)" ref="face">
@@ -21,6 +22,7 @@
               <span>链接</span>
             </span>
           </div>
+          <!-- 输入区域 -->
           <textarea
             id="editContent"
             class="rc-editor"
@@ -301,12 +303,6 @@ export default {
       position: relative;
       top: 4px;
     }
-  }
-
-  .edit-content {
-    position: absolute;
-    top: 45px;
-    left: 0;
   }
 }
 </style>

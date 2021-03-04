@@ -46,8 +46,14 @@ h6 {
 
 /*清除浮动，解决margin-top的塌陷*/
 
+.clearfix::after {
+  content: ""; /*设置内容为空*/
+  display: block; /*将文本转为块级元素*/
+  clear: both; /*清除浮动*/
+}
+
 .clearfix {
-  overflow: hidden;
+  zoom: 1; /*兼容IE*/
 }
 
 .fl {
@@ -113,16 +119,18 @@ h6 {
   justify-content: center;
 }
 
-.edit-content {
+.high-router {
+  background-color: red;
+  color: white;
+}
+
+/* 编辑框插入弹窗 */
+.edit-container {
   position: absolute;
   top: 45px;
   left: 0;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.3);
-}
-
-.high-router{
-  background-color: red;
-  color: white;
+  padding: 10px;
 }

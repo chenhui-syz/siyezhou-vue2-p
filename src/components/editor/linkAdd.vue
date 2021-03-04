@@ -1,27 +1,11 @@
 <template>
   <transition name="fade">
-    <div
-      class="edit-content"
-      v-show="isShow"
-    >
-      <div class="">请输入合法链接</div>
-      <div class="">
-        <input
-          type="text"
-          class=""
-          v-model="link"
-          id="linkInput"
-        />
-      </div>
-      <span class="" @click="cancel()">
-        <a
-          href="javascript:;"
-          class=""
-        ></a>
-      </span>
-      <div class="">
-        <a class="" @click.prevent="submit()">确定</a>
-        <a class="" @click.prevent="cancel()">取消</a>
+    <div class="edit-container edit-container-link" v-show="isShow">
+      <p class="link-title">请输入合法链接</p>
+      <el-input v-model="link" id="linkInput" />
+      <div class="link-footer">
+        <el-button @click="cancel">取消</el-button>
+        <el-button type="primary" @click="submit">确定</el-button>
       </div>
     </div>
   </transition>
@@ -57,4 +41,14 @@ export default {
 };
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+.edit-container-link {
+  width: 500px;
+  .link-title {
+    padding: 10px 0;
+  }
+  .link-footer {
+    margin-top: 10px;
+  }
+}
+</style>

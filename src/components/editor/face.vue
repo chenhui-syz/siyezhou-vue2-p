@@ -1,18 +1,16 @@
 <template>
   <transition name="fade">
-    <div class="edit-content" v-show="isShow">
-      <div class="edit-contanier">
-        <ul class="edit-wrapper clearfix">
-          <li
-            v-for="(value, key) in lists"
-            class="edit-item"
-            :key="'face' + key"
-            @click="handleFaceClick(key)"
-          >
-            <img :src="value" />
-          </li>
-        </ul>
-      </div>
+    <div class="edit-container edit-container-face" v-show="isShow">
+      <ul class="edit-wrapper clearfix">
+        <li
+          v-for="(value, key) in lists"
+          class="edit-item"
+          :key="'face' + key"
+          @click="handleFaceClick(key)"
+        >
+          <img :src="value" />
+        </li>
+      </ul>
     </div>
   </transition>
 </template>
@@ -37,13 +35,10 @@ export default {
 </script>
 
 <style lang="less">
-.edit-contanier {
-  text-align: left;
-
+.edit-container-face {
   .edit-wrapper {
     position: relative;
     width: 372px;
-    padding: 10px;
     border: 1px solid #d9d9d9;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
