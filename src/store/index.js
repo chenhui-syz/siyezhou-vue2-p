@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import WebSocketClient from '@/utils/websocket'
+// import WebSocketClient from '@/utils/websocket'
 
 
 Vue.use(Vuex)
@@ -13,10 +13,10 @@ export default new Vuex.Store({
     userInfo: {},
   },
   mutations: {
-    initWebSocket(state, config) {
-      state.ws = new WebSocketClient(config)
-      state.ws.init()
-    },
+    // initWebSocket(state, config) {
+    //   state.ws = new WebSocketClient(config)
+    //   state.ws.init()
+    // },
     setSid(state, value) {
       state.sid = value
     },

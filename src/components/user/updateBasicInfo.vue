@@ -1,6 +1,6 @@
 <template>
   <div class="updatebasicinfo-page-container">
-    updatebasicinfo-page-container
+    updatebasicinfo-page-container 修改基本资料
   </div>
 </template>
 

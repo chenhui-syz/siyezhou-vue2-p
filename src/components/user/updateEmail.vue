@@ -1,6 +1,6 @@
 <template>
   <div class="updateemail-page-container">
-    updateemail-page-container
+    updateemail-page-container 修改邮箱
   </div>
 </template>
 

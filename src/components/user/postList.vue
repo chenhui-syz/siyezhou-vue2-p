@@ -1,6 +1,6 @@
 <template>
   <div class="postlist-page-container">
-    postlist-page-container
+    postlist-page-container 帖子列表
   </div>
 </template>
 

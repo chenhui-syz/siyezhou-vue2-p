@@ -1,6 +1,6 @@
 <template>
   <div class="essencelist-page-container">
-    essencelist-page-container
+    essencelist-page-container 精华帖
   </div>
 </template>
 

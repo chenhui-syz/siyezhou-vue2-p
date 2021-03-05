@@ -2,6 +2,8 @@ import Vue from "vue";
 
 import "element-ui/lib/theme-chalk/index.css";
 import "@/assets/css/common.css";
+import "@/assets/css/reset.css";
+
 // 自定义指令
 import Alert from "./components/directives/alert";
 import Pop from "./components/directives/pop";

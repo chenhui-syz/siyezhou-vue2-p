@@ -1,6 +1,6 @@
 <template>
   <div class="info-page-container">
-    info-page-container
+    info-page-container 我的信息
   </div>
 </template>
 

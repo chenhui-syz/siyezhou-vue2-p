@@ -1,6 +1,6 @@
 <template>
   <div class="register-page-container">
-    register-page-container
+    register-page-container 天天签到
   </div>
 </template>
 

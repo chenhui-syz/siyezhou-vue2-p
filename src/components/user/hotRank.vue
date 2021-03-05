@@ -1,6 +1,6 @@
 <template>
   <div class="hotrank-page-container">
-    hotrank-page-container
+    hotrank-page-container 热度排行
     <router-view></router-view>
   </div>
 </template>

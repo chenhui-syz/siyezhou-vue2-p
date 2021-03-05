@@ -1,6 +1,6 @@
 <template>
   <div class="lottery-page-container">
-    lottery-page-container
+    lottery-page-container 积分抽奖
   </div>
 </template>
 

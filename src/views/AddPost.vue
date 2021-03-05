@@ -1,9 +1,9 @@
 <template>
   <div class="addpost-page-container">
     <div class="w-1200">
-      <el-form ref="ruleForm" :model="form" label-width="80px">
+      <el-form ref="ruleForm" :model="ruleForm" label-width="80px">
         <el-form-item label="活动名称">
-          <el-input v-model="form.title"></el-input>
+          <el-input v-model="ruleForm.title"></el-input>
         </el-form-item>
         <!-- 富文本编辑框 -->
         <div class="edit-wrap">
@@ -49,18 +49,17 @@
             ></link-add>
           </div>
         </div>
-        <el-form-item label="悬赏分">
-          <el-select v-model="form.fav" placeholder="发表后无法修改">
-            <el-option label="20" value="20"></el-option>
-            <el-option label="60" value="60"></el-option>
-            <el-option label="100" value="100"></el-option>
-          </el-select>
-        </el-form-item>
         <el-form-item label="验证码">
-          <el-input v-model="form.code"></el-input>
+          <el-input v-model="ruleForm.code"></el-input>
+          <span
+            class="svg"
+            style="color: #c00;"
+            @click="_getCode()"
+            v-html="svg"
+          ></span>
         </el-form-item>
       </el-form>
-      <el-button type="primary" @click="submit">立即发布</el-button>
+      <el-button type="primary" @click="submit('ruleForm')">立即发布</el-button>
     </div>
   </div>
 </template>
@@ -69,9 +68,12 @@
 import Face from "@/components/editor/face";
 import ImgUpload from "@/components/editor/imgUpload";
 import LinkAdd from "@/components/editor/linkAdd";
+import { addPost } from "@/api/content";
+import CodeMix from "@/mixin/login";
 window.vue = this;
 export default {
   name: "addpost",
+  mixins: [CodeMix],
   components: {
     Face,
     LinkAdd,
@@ -79,13 +81,14 @@ export default {
   },
   data() {
     return {
-      form: {
+      ruleForm: {
         title: "",
-        fav: "",
         code: "",
       },
       current: "",
+      // 当前全部的文本内容
       content: "",
+      // 光标的位置
       pos: "",
     };
   },
@@ -140,9 +143,12 @@ export default {
     // 添加表情
     addFace(item) {
       console.log(item);
+      // 接收到用户选择插入的内容，然后拼接成实际需要的格式
       const insertContent = ` face${item}`;
+      // 插入到文本区域
       this.insert(insertContent);
-      this.pos = insertContent.length;
+      // 把光标的位置根据插入内容的长度后移
+      this.pos += insertContent.length;
     },
     // 添加图片链接
     addPic(item) {
@@ -160,12 +166,18 @@ export default {
       if (typeof this.content === "undefined") {
         return;
       }
+      // 将当前文本内容打散成一个数组
       let tmp = this.content.split("");
+      // 在光标的位置插入内容
       tmp.splice(this.pos, 0, val);
       this.content = tmp.join("");
     },
-    submit() {
+    submit(ruleForm) {
       console.log("xxx");
+      if(this.content.trim() === ''){
+        this.$pop('shake','请输入帖子内容')
+        return 
+      }
       // this.$pop('shake','请上传图片或输入图片链接')
       // this.$alert("文章内容不能为空");
       // this.$Pageconfirm(
@@ -175,29 +187,32 @@ export default {
       //   },
       //   () => {}
       // )
-      // this.$refs[ruleForm].validate((valid) => {
-      // 验证通过，提交表单
-      // if (valid) {
-      //   console.log("验证通过，提交表单");
-      //   // login({
-      //   //   username: this.ruleForm.email,
-      //   //   password: this.ruleForm.password,
-      //   //   code: this.ruleForm.code,
-      //   //   sid: this.$store.state.sid,
-      //   // })
-      //     .then((res) => {
-      //       if (res.code === 200) {
-      //       } else if (res.code === 401) {
-      //         console.log("出现错误");
-      //       }
-      //     })
-      //     .catch((err) => {});
-      // } else {
-      //   // 不通过
-      //   // console.log("error submit!!");
-      //   // return false;
-      // }
-      // });
+      this.$refs[ruleForm].validate((valid) => {
+        // 验证通过，提交表单
+        if (valid) {
+          console.log("验证通过，提交表单");
+          addPost({
+            // username: this.ruleForm.email,
+            // password: this.ruleForm.password,
+            // code: this.ruleForm.code,
+            // sid: this.$store.state.sid,
+          })
+            .then((res) => {
+              if (res.code === 200) {
+                console.log(res);
+              } else if (res.code === 401) {
+                console.log("出现错误");
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          // 不通过
+          console.log("error submit!!");
+          return false;
+        }
+      });
     },
   },
   mounted() {

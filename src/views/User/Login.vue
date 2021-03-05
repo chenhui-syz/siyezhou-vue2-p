@@ -37,9 +37,7 @@
 </template>
 
 <script>
-// import { getCode } from "@/api/login";
 import { login } from "@/api/login";
-// import uuid from "uuid/v4";
 import CodeMix from "@/mixin/login";
 export default {
   name: "login",
@@ -64,21 +62,8 @@ export default {
           },
         ],
       },
-      // code: "",
-      // svg: "",
     };
   },
-  // mounted() {
-  //   let sid = "";
-  //   if (localStorage.getItem("sid")) {
-  //     sid = localStorage.getItem("sid");
-  //   } else {
-  //     sid = uuid();
-  //     localStorage.setItem("sid", sid);
-  //   }
-  //   this.$store.commit("setSid", sid);
-  //   this._getCode();
-  // },
   methods: {
     submitForm(ruleForm) {
       this.$refs[ruleForm].validate((valid) => {
@@ -124,17 +109,6 @@ export default {
         }
       });
     },
-    // resetForm(ruleForm) {
-    //   this.$refs[ruleForm].resetFields();
-    // },
-    // _getCode() {
-    //   let sid = this.$store.state.sid;
-    //   getCode(sid).then((res) => {
-    //     if (res.code === 200) {
-    //       this.svg = res.data;
-    //     }
-    //   });
-    // },
   },
 };
 </script>

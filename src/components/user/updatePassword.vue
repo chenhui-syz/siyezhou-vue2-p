@@ -1,6 +1,6 @@
 <template>
   <div class="updatepassword-page-container">
-    updatepassword-page-container
+    updatepassword-page-container 修改密码
   </div>
 </template>
 
